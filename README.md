@@ -62,6 +62,8 @@ DELETE FROM Employees WHERE id = 2;
 ```
 These examples illustrate how CRUD operations are performed in SQLite. Each operation uses different SQL statements to modify or query the database structure and data.
 
+## Clone the project to see how these operations are implemented in Android
+
 
 
 
