@@ -56,17 +56,19 @@ class MainActivity : AppCompatActivity() {
              */
 
 
-        }catch (e:Exception){e.printStackTrace()
+        } catch (e: Exception) {
+            e.printStackTrace()
 
         }
 
         // # SQLite Database basics PART 2 { filtering data, increment id automatically}
         try {
-            val myDatabase:SQLiteDatabase = this.openOrCreateDatabase("Developers", MODE_PRIVATE,null)
-           // myDatabase.execSQL("CREATE TABLE IF NOT EXISTS engineers (id INTEGER PRIMARY KEY, name VARCHAR, age INT)")
-          //  myDatabase.execSQL("INSERT INTO engineers (name,age) VALUES ('Mike', 23)")
-          //  myDatabase.execSQL("INSERT INTO engineers (name,age) VALUES ('Serhat', 22)")
-           // myDatabase.execSQL("INSERT INTO engineers (name,age) VALUES ('John', 34)")
+            val myDatabase: SQLiteDatabase =
+                this.openOrCreateDatabase("Developers", MODE_PRIVATE, null)
+            // myDatabase.execSQL("CREATE TABLE IF NOT EXISTS engineers (id INTEGER PRIMARY KEY, name VARCHAR, age INT)")
+            //  myDatabase.execSQL("INSERT INTO engineers (name,age) VALUES ('Mike', 23)")
+            //  myDatabase.execSQL("INSERT INTO engineers (name,age) VALUES ('Serhat', 22)")
+            // myDatabase.execSQL("INSERT INTO engineers (name,age) VALUES ('John', 34)")
 
 
             //filtering data queries
@@ -77,10 +79,10 @@ class MainActivity : AppCompatActivity() {
             val filteredData4 = "SELECT * FROM engineers WHERE name LIKE 'ike%'"
 
             //updating data...
-            val updateQuery:String="UPDATE engineers SET age=81 WHERE name='Mike'"
+            val updateQuery: String = "UPDATE engineers SET age=81 WHERE name='Mike'"
             myDatabase.execSQL(updateQuery)
 
-            val cursor:Cursor = myDatabase.rawQuery(wholeData,null)
+            val cursor: Cursor = myDatabase.rawQuery(wholeData, null)
             val nameIX = cursor.getColumnIndex("name")
             val ageIX = cursor.getColumnIndex("age")
             val idIX = cursor.getColumnIndex("id")
@@ -89,30 +91,21 @@ class MainActivity : AppCompatActivity() {
             val deleteQuery = "DELETE FROM engineers WHERE id=3"
             myDatabase.execSQL(deleteQuery)
 
-            while (cursor.moveToNext()){
-                println("id: ${cursor.getInt(idIX)}, name: ${cursor.getString(nameIX)}, age: ${cursor.getInt(ageIX)} " )
+            while (cursor.moveToNext()) {
+                println(
+                    "id: ${cursor.getInt(idIX)}, name: ${cursor.getString(nameIX)}, age: ${
+                        cursor.getInt(
+                            ageIX
+                        )
+                    } "
+                )
 
             }
 
 
-
-
-
-
-
-
-
-
-
-
-        }catch (e:Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
         }
-
-
-
-
-
 
 
     }
